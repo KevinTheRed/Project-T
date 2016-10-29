@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Ott 29, 2016 alle 11:30
+-- Generation Time: Ott 29, 2016 alle 11:55
 -- Versione del server: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `diplomati`
+-- Database: `neodiplomati`
 --
 
 -- --------------------------------------------------------
@@ -37,7 +37,8 @@ CREATE TABLE IF NOT EXISTS `diplomati` (
   `VotoFinale` int(11) NOT NULL,
   `Telefono` varchar(16) COLLATE utf8_bin DEFAULT NULL,
   `Cellulare` varchar(16) COLLATE utf8_bin DEFAULT NULL,
-  `EMail` varchar(64) COLLATE utf8_bin NOT NULL
+  `EMail` varchar(64) COLLATE utf8_bin NOT NULL,
+  `AnnoDiploma` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
