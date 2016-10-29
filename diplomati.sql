@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Ott 29, 2016 alle 11:55
+-- Generation Time: Ott 29, 2016 alle 12:47
 -- Versione del server: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `neodiplomati`
+-- Database: `diplomati`
 --
 
 -- --------------------------------------------------------
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `diplomati` (
-  `CF` varchar(16) COLLATE utf8_bin NOT NULL,
+  `AnnoMatricola` int(16) NOT NULL,
   `Cognome` varchar(15) COLLATE utf8_bin NOT NULL,
   `Nome` varchar(15) COLLATE utf8_bin NOT NULL,
   `DataNascita` date NOT NULL,
@@ -37,9 +37,34 @@ CREATE TABLE IF NOT EXISTS `diplomati` (
   `VotoFinale` int(11) NOT NULL,
   `Telefono` varchar(16) COLLATE utf8_bin DEFAULT NULL,
   `Cellulare` varchar(16) COLLATE utf8_bin DEFAULT NULL,
-  `EMail` varchar(64) COLLATE utf8_bin NOT NULL,
-  `AnnoDiploma` int(4) NOT NULL
+  `EMail` varchar(64) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dump dei dati per la tabella `diplomati`
+--
+
+INSERT INTO `diplomati` (`AnnoMatricola`, `Cognome`, `Nome`, `DataNascita`, `IndirizzoScolastico`, `Provincia`, `Comune`, `VotoFinale`, `Telefono`, `Cellulare`, `EMail`) VALUES
+(161, 'Pisano', 'Giulio', '2016-10-31', 'Meccanica', 'CN', 'Roccavione', 61, NULL, NULL, ''),
+(162, 'Siciliani', 'Achille', '2016-04-11', 'Chimica', 'CN', 'Demonte', 63, '0171265478', '3485549875', ''),
+(163, 'Chen', 'Federico', '1998-11-27', 'Informatica', 'CN', 'Cuneo', 64, NULL, '3458974578', 'theelevenrico@gmail.com'),
+(164, 'Bagnis', 'Leopoldo', '2016-08-08', 'Meccanica', 'CN', 'Vinadio', 69, NULL, NULL, 'ioamoimotori111@yahoo.com'),
+(165, 'Barale', 'Tessa', '2016-02-08', 'Chimica', 'CN', 'Madonna dell''Olmo', 71, NULL, NULL, ''),
+(166, 'Martina', 'Davide', '1997-05-12', 'Informatica', 'CN', 'Cuneo', 76, NULL, '3785574564', ''),
+(167, 'Carignano', 'Gianni', '1998-07-17', 'Informatica', 'CN', 'Cuneo', 77, '0171257777', NULL, 'theansweris42@gmail.com'),
+(168, 'Padovano', 'Paolo', '2015-09-09', 'Meccanica', 'CN', 'Fontanelle', 78, NULL, NULL, ''),
+(169, 'Bongiovanni', 'Valeria', '2016-10-12', 'Chimica', 'CN', 'Piasco', 80, '3547567845', NULL, ''),
+(196, 'Bernardi', 'Mariano', '2016-09-27', 'Elettrotecnica', 'CN', 'Castelletto Stura', 68, NULL, '3248795645', ''),
+(1610, 'Rosso', 'Kevin', '1998-06-29', 'Informatica', 'CN', 'Borgo San Dalmazzo', 82, '0171262309', '3406696285', 'kevin.rosso98@gmail.com'),
+(1611, 'Romano', 'Damiano', '2016-09-13', 'Elettrotecnica', 'CN', 'Peveragno', 85, NULL, '3257859452', 'romano.damiano@gmail.com'),
+(1612, 'Arnaudo', 'Anna', '2016-01-12', 'Elettrotecnica', 'CN', 'Vignolo', 88, '0171265489', NULL, 'anninaarny@hotmail.it'),
+(1613, 'Turbato', 'Thomas', '2016-02-29', 'Chimica', 'CN', 'Sampeyre', 90, NULL, '3548781859', 'th0mas.turb4to@yahoo.com'),
+(1614, 'Argese', 'Alessandro', '1998-07-30', 'Informatica', 'CN', 'Roata Rossi', 92, NULL, NULL, 'arge.misorellasichiamaelisa@gmail.com'),
+(1615, 'Peirone', 'Luca', '1997-03-16', 'Informatica', 'CN', 'Cuneo', 94, '0171245789', NULL, 'luca.peirone@gmail.com'),
+(1616, 'Giraudo', 'Francesco', '1998-08-21', 'Chimica', 'CN', 'Borgo San Dalmazzo', 99, NULL, '3458751245', 'ceaucescu@hotmail.it'),
+(1617, 'Costa', 'Elena', '2015-06-09', 'Elettrotecnica', 'CN', 'Bernezzo', 100, NULL, '5498789245', ''),
+(1618, 'Garino', 'Marco', '1998-05-17', 'Informatica', 'CN', 'Borgo San Dalmazzo', 100, NULL, '3469710113', ''),
+(1619, 'Pisu', 'Giulia', '2016-08-03', 'Chimica', 'CN', 'Tarantasca', 85, NULL, NULL, 'pisugiulia98@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -49,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `diplomati` (
 -- Indexes for table `diplomati`
 --
 ALTER TABLE `diplomati`
- ADD PRIMARY KEY (`CF`);
+ ADD PRIMARY KEY (`AnnoMatricola`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
