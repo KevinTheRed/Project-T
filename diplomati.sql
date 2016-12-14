@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Ott 29, 2016 alle 12:47
+-- Generation Time: Dic 14, 2016 alle 10:14
 -- Versione del server: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -58,8 +58,8 @@ INSERT INTO `diplomati` (`AnnoMatricola`, `Cognome`, `Nome`, `DataNascita`, `Ind
 (1610, 'Rosso', 'Kevin', '1998-06-29', 'Informatica', 'CN', 'Borgo San Dalmazzo', 82, '0171262309', '3406696285', 'kevin.rosso98@gmail.com'),
 (1611, 'Romano', 'Damiano', '2016-09-13', 'Elettrotecnica', 'CN', 'Peveragno', 85, NULL, '3257859452', 'romano.damiano@gmail.com'),
 (1612, 'Arnaudo', 'Anna', '2016-01-12', 'Elettrotecnica', 'CN', 'Vignolo', 88, '0171265489', NULL, 'anninaarny@hotmail.it'),
-(1613, 'Turbato', 'Thomas', '2016-02-29', 'Chimica', 'CN', 'Sampeyre', 90, NULL, '3548781859', 'th0mas.turb4to@yahoo.com'),
-(1614, 'Argese', 'Alessandro', '1998-07-30', 'Informatica', 'CN', 'Roata Rossi', 92, NULL, NULL, 'arge.misorellasichiamaelisa@gmail.com'),
+(1613, 'Tasso', 'Torquato', '2016-02-29', 'Chimica', 'CN', 'Sampeyre', 90, NULL, '3548781859', 'torquato.laRoccia@yahoo.com'),
+(1614, 'Argese', 'Alessandro', '1998-07-30', 'Informatica', 'CN', 'Roata Rossi', 92, NULL, NULL, 'cappuccioverde@gmail.com'),
 (1615, 'Peirone', 'Luca', '1997-03-16', 'Informatica', 'CN', 'Cuneo', 94, '0171245789', NULL, 'luca.peirone@gmail.com'),
 (1616, 'Giraudo', 'Francesco', '1998-08-21', 'Chimica', 'CN', 'Borgo San Dalmazzo', 99, NULL, '3458751245', 'ceaucescu@hotmail.it'),
 (1617, 'Costa', 'Elena', '2015-06-09', 'Elettrotecnica', 'CN', 'Bernezzo', 100, NULL, '5498789245', ''),
