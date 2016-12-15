@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	<!--
+		Implementato da Argese Alessandro e Rosso Kevin
+
+		Lo slider è stato preso da "https://dhtmlx.com/docs/products/dhtmlxSlider/samples/index.html"
+		Download slider: "https://dhtmlx.com/docs/products/dhtmlxSlider/"
+	-->
+
+		<title>Ricerca diplomati</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+		<!--RIFERIMENTO A JQUERY-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+		<!--RIFERIMENTI ALLO SLIDER-->
+		<link rel="stylesheet" type="text/css" href="dhtmlxSlider/codebase/fonts/font_roboto/roboto.css"/>
+		<link rel="stylesheet" type="text/css" href="dhtmlxSlider/codebase/dhtmlxslider.css"/>
+		<script src="dhtmlxSlider/codebase/dhtmlxslider.js"></script>
+
+		<style>
+			#sliderObj {
+				width: 160px;
+				height: 30px;
+				margin-top: 2px;
+			}
+			#sliderLink, #sliderLink2 {
+				font-size: 12px;
+				font-family: Tahoma;
+			}
+			table.demo_table td {
+				text-align: left;
+				vertical-align: top;
+				padding-right: 10px;
+			}
+			span.minussign {
+				font-size: 12px;
+				font-family: Tahoma;
+				padding: 0px 10px;
+			}
+
+			img { 
+			    -webkit-filter: drop-shadow(0px 2px 2px #666);
+			    filter:         drop-shadow(0px 2px 2px #666);
+			}
+
+			img:hover { 
+			    -webkit-filter: drop-shadow(0px 2px 4px #666);
+			    filter:         drop-shadow(0px 2px 4px #666);
+			    width: 28px;
+			    height: 28px;
+			}
+		</style>
+
+		<script>
+			var mySlider;
+			
+			function doOnLoad(){//In fase di caricamento:
+				mySlider = new dhtmlXSlider({	//...assegna la maniglia dello slider ad un oggetto,
+					parent: "sliderObj",
+					linkTo: ["sliderLink", "sliderLink2"],
+					step: 1,
+					min: 60,
+					max: 100,
+					value: [60, 100], //valori degli sliders
+					range: true
+				});
+
+				filtri.citta.value=""; //... pulisce la txtbox citta,
+
+				interagisci(filtri); //...visualizza l'elenco completo dei diplomati
+			};
+			
+			//IN FASE DI UNLOAD RIMUOVE GLI SLIDERS
+			function doOnUnload(){
+				if (mySlider != null){
+					mySlider.unload();
+					mySlider = null;
+				}
+			};
+
+			//DISABILITA IL TASTO INVIO
+			window.addEventListener('keydown', function (event) {
+
+			    // se il keyCode è 13 ( viene premuto il tasto invio )
+			    if (event.keyCode == 13) {
+
+			        // previene l'azione di default
+			        event.preventDefault();
+
+			        return false;
+			    }
+
+			});
+
+			//FUNZIONE CHIAMATA AL CLICK DEL BOTTONE
+			function interagisci(form){
+
+				//salva i valori dei filtri in variabili js
+				specializzazione=form.specializzazione.value;
+				citta=form.citta.value;
+				voti=mySlider.getValue();
+				min=voti[0];
+				max=voti[1];
+
+				//chiama un file php
+				$(document).ready(function(){
+				    $.ajax({
+					    type: "POST", //la chiamata è di tipo POST, quindi passa dei valori
+					    url: 'http://localhost/ricerca/view.php', //bisogna passare per URL, non per path
+					    data: { spec : specializzazione, cit : citta, votoMin : min, votoMax: max}, //indica i dati che passa al file php
+					    success: function(data)  //in caso di successo
+					    {
+					    	//aggiunge al tag con id "elenco" il valore del file php interpretato dal web server
+					    	$("#elenco").html(data);
+					    }
+					});
+				});
+			};
+
+		</script>
+
+	</head>
+
+	<body onload="doOnLoad();" onunload="doOnUnload();">
+
+		<!--FORM CONTENENTE I FILTRI, L'AZIONE E' ANNULLATA (#)-->
+		<form id="filtri" name="filtri" action="#" enctype="text/plain">
+			<!--TABELLA PER TENERE ALLINEATI I FILTRI-->
+			<table cellspacing="0" cellpadding="0" border="0" class="demo_table" align="center">
+				<tr>
+					<td>Specializzazione:</td>
+					<td> <!--spazio vuoto-->
+						<select name="specializzazione" class="tabella"> <!--menù a tendina per selezionare la specializzazione-->
+							<option selected value="0">Tutte le specializzazioni</option> <!--il valore restituito da questa opzione è '0'-->
+							<option>Chimica</option>
+							<option>Elettrotecnica</option>
+							<option>Informatica</option>
+							<option>Meccanica</option>
+						</select>
+					</td>
+					<td></td> <!--spazio vuoto-->
+					<td></td> <!--spazio vuoto-->
+					<td>Valutazione finale:</td>
+					<td><div id="sliderObj"></div></td> <!--slider per scegliere l'intervallo di voti-->
+					<td width="8px" white-space="nowrap"><span id="sliderLink"></span><span class="minussign">-</span><span id="sliderLink2"></span></td>
+					<td></td> <!--spazio vuoto-->
+					<td></td> <!--spazio vuoto-->
+					<td>Città:</td>
+					<td><input type="text" name="citta" size="35" maxlength="40" value=""><br></td> <!--campo di testo per inserire la città-->
+					<td></td> <!--spazio vuoto-->
+
+					<!--immagine che funge da bottone per chiamare la funzione interagisci(), permettendo di applicare i filtri selezionati-->
+					<td width="30px"><img src="http://localhost/ricerca/res/btn 26x26.png" onclick="interagisci(filtri)" valign="center" box-shadow="10px 10px 5px #888888"></td>
+				</tr>
+			</table>
+		</form>
+
+		<br>
+		<br>
+
+		<!--PARAGRAFO DESTINATO A CONTENERE LA TABELLA CON I RISULTATI DELLA RICERCA. VIENE MODIFICATO DALLA FUNZIONE interagisci()-->
+		<p id="elenco" align="center">
+
+    	</p>
+
+	</body>
+</html>
